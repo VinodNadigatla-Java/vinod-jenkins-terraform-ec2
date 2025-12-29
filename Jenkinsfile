@@ -7,10 +7,6 @@ pipeline {
     AWS_DEFAULT_REGION = "us-east-1"
   }
 
-  stages {
-    stage('Checkout') {
-      steps { checkout scm }
-    }
 
     stage('Build (terraform fmt)') {
       steps {
