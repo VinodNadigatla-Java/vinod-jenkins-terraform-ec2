@@ -25,18 +25,20 @@ pipeline {
       }
     }
 
-    stage('Deploy (terraform apply)') {
-      steps {
-        withCredentials([
-          [$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']
-        ]) {
-          dir('terraform') {
-            sh 'terraform plan -out=tfplan'
-            sh 'terraform apply -auto-approve tfplan'
-          }
-        }
+stage('Deploy (terraform apply)') {
+  steps {
+    withCredentials([
+      string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
+      string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')
+    ]) {
+      dir('terraform') {
+        sh 'terraform plan -out=tfplan'
+        sh 'terraform apply -auto-approve tfplan'
       }
     }
+  }
+} 
+
 
     stage('Smoke test (open site)') {
       steps {
