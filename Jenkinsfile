@@ -7,7 +7,7 @@ pipeline {
     AWS_DEFAULT_REGION = "us-east-1"
   }
 
-
+  stages {
     stage('Build (terraform fmt)') {
       steps {
         dir('terraform') {
@@ -62,4 +62,4 @@ pipeline {
       }
     }
   }
-
+}
