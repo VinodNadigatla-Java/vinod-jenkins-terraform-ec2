@@ -55,7 +55,7 @@ resource "aws_instance" "app" {
     <html>
       <head><title>Vinod App</title></head>
       <body style="font-family: Arial; padding: 40px;">
-        <h1>hello world i am vinod</h1>
+        <h1>Hello All my name is vinod welcome to my world </h1>
       </body>
     </html>
     HTML
